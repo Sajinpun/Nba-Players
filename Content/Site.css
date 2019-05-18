@@ -1,0 +1,79 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-color: #c6c2c2;
+    color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /*background-image: url(../img/nba2.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    border-image-width: 300px;*/
+}
+
+.image {
+
+    padding-left: 15px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.table {
+    background-color: transparent;
+    color: black;
+}
+
+.table-header {
+    background-color: #f00b47;
+    color: #fff;
+}
+
+.btn-default {
+    background-color: #466289;
+    color: #fff;
+}
+
+.profile {
+    padding: 20px;
+    background-color: #466289;
+    color: black;
+    box-shadow: 10px 10px 5px grey;
+}
+
+.name {
+    text-align: center;
+    font-size: 16px;
+}
+
+.heading {
+    text-align: center;
+    font-size: 40px;
+    color: #fff;
+}
+
+.heading-container {
+    padding: 10px 10px;
+    background: #f00b47;
+}
+
+.search {
+    font-weight: 800;
+    font-size: 14px;
+}

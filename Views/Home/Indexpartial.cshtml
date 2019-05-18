@@ -1,0 +1,106 @@
+﻿@model CricketPlayers.Models.Player
+
+
+<table class="table">
+    <tr class="table-header">
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.Picture)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.Nationality)
+        </th>
+        <th class="text-center">
+            Current Team
+        </th>
+        <th class="text-center">
+            Ratings
+        </th>
+        <th class="text-center">
+            Rate the Player
+        </th>
+        <th class="text-center">
+            Actions
+        </th>
+    </tr>
+        <tr>
+            <td class="text-center">
+                <img src="@Url.Content(Model.Picture)" height="100" />
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => Model.Name)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => Model.Nationality)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => Model.Current_Team)
+            </td>
+            <td class="text-center">
+                <i class="icon-thumbs-up"></i>
+                @Html.DisplayFor(modelItem => Model.Likes)
+                <span style="padding: 0 10px;"></span>
+                @using (Ajax.BeginForm(
+                    actionName: "Like",
+               controllerName: "Home",
+               routeValues: new { id = Model.id },
+               ajaxOptions: new AjaxOptions
+               {
+                   UpdateTargetId = Model.id.ToString(),
+                   InsertionMode = InsertionMode.Replace
+               }
+                                                ))
+                {
+                    @Html.ActionLink("Like", "Like", new { Model.id }, new { @class = "btn btn-success" })
+
+                }
+            </td>
+        <td class="text-center">
+            <i class="icon-thumbs-down"></i>
+            @Html.DisplayFor(modelItem => Model.Dislikes)
+            @using (Ajax.BeginForm(
+                            actionName: "Dislike",
+                       controllerName: "Home",
+                       routeValues: new { id = Model.id },
+                       ajaxOptions: new AjaxOptions
+                       {
+                           UpdateTargetId = Model.id.ToString(),
+                           InsertionMode = InsertionMode.Replace
+                       }
+                                                        ))
+            {
+                @Html.ActionLink("Dislike", "Dislike", new { Model.id }, new { @class = "btn btn-danger" })
+
+            }
+        </td>
+            @*<td class="text-center">
+                <ul class="list-inline">
+                </ul>
+            </td>*@
+
+
+            <td class="text-center">
+                <ul class="list-inline">
+                    @Html.ActionLink("Profile", "Profile", new { Model.id }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Edit", "Edit", new { Model.id }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Delete", "Delete", new { Model.id }, new { @class = "btn btn-default" })
+                </ul>
+            </td>
+        </tr>
+    }
+</table>
+
+
+
+<!-- INseet AJAX Likes Here -->
+
+<div class="flex-item4col"><img width="80" height="80" src="/@Url.Content(Model.Picture)" /></div>
+
+<div class="flex-item4col">    @Html.DisplayFor(Model => Model.User)</div>
+
+
+
+
+

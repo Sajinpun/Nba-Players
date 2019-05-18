@@ -1,0 +1,73 @@
+﻿@model CricketPlayers.Models.Player
+
+@{
+    ViewBag.Title = "Profile";
+}
+
+<h2>Profile</h2>
+
+<div class="container profile">
+    <h4>Player</h4>
+    <hr />
+    <div class="col-md-2">
+        <img src="@Url.Content(Model.Picture)" alt="Player" height="200">
+        <br /><br />
+        <p class="name">@Html.DisplayFor(model => model.Name)</p>
+
+
+    </div>
+    <div class="col-md-10">
+        <dl class="dl-horizontal">
+
+            <dt>
+                Info
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Description)<br /><br />
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Nationality):
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Nationality)<br /><br />
+            </dd>
+            <dt>
+                Current Team:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Current_Team)<br /><br />
+            </dd>
+            <dt>
+                Matches Played:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Matches_Played)<br /><br />
+            </dd>
+            <dt>
+                Highest Score:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Highest_Score)<br /><br />
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Likes):
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Likes)<br /><br />
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Dislikes):
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Dislikes)<br /><br />
+            </dd>
+            <dt>
+                Added by:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.User)<br /><br />
+            </dd>
+        </dl>
+    </div>
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+</div>

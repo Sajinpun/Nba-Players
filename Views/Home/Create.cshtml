@@ -1,0 +1,86 @@
+﻿@model CricketPlayers.Models.Player
+
+@{
+    ViewBag.Title = "Add new player";
+}
+
+<h2>Add new player</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control col-md-6" } })
+                @Html.ValidationMessageFor(model => model.Name, null, new { @class = "text-danger col-md-6" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Info</label>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control col-md-6", rows = 10 })
+                @Html.ValidationMessageFor(model => model.Description, null, new { @class = "text-danger col-md-6" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nationality, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nationality, new { htmlAttributes = new { @class = "form-control col-md-6" } })
+                @Html.ValidationMessageFor(model => model.Nationality, null, new { @class = "text-danger col-md-6" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Current Team</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Current_Team, new { htmlAttributes = new { @class = "form-control col-md-6" } })
+                @Html.ValidationMessageFor(model => model.Current_Team, null, new { @class = "text-danger col-md-6" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Matches Played</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Matches_Played, new { htmlAttributes = new { @class = "form-control col-md-6" } })
+                @Html.ValidationMessageFor(model => model.Matches_Played, null, new { @class = "text-danger col-md-6" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Highest Score</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Highest_Score, new { htmlAttributes = new { @class = "form-control col-md-6" } })
+                @Html.ValidationMessageFor(model => model.Highest_Score, null, new { @class = "text-danger col-md-6" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Picture URL</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Picture,
+                    new { htmlAttributes = new { @class = "form-control col-md-6",
+                        placeholder = "https://ae01.alicdn.com/kf/HTB1FohERFXXXXXBXpXXq6xXFXXX5/14-1-CM-12-5-CM-do-Jogador-de-Basquetebol-Silhueta-Etiqueta-Do-Carro-Vinil-S9.jpg_640x640.jpg"} })
+                @Html.ValidationMessageFor(model => model.Picture, null, new { @class = "text-danger col-md-6" })
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="control-label col-md-2">Your name</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.User, new { htmlAttributes = new { @class = "form-control col-md-6" } })
+                @Html.ValidationMessageFor(model => model.User, null, new { @class = "text-danger col-md-6" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add" class="btn btn-default" />
+                @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,123 @@
+﻿@using CricketPlayers.Models
+@model IEnumerable<Player>
+<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width = device-width" />
+    <meta http-equiv="Page-Exit" content="Alpha(opacity=100)" />
+
+    <title>Index</title>
+</head>
+
+<body>
+
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
+            @{
+                ViewBag.Title = "NBA Players";
+            }
+            <div class="container heading-container">
+                <img class="image" src="~/img/nba2.png" alt="Sample Photo" height="200" width="1100" />
+                <div class="heading">National Basketball Assocation (NBA) Players Database</div>
+            </div>
+            <hr />
+            @Html.ActionLink("Add new player", "Create", null, new { @class = "btn btn-default" })
+            <br />
+            <br />
+            @using (Html.BeginForm())
+            {
+                <p class="search">
+                    Team: @Html.DropDownList("playerTeam", "All")
+                    Name: @Html.TextBox("SearchString")
+                    <input type="submit" value="Search" class="btn btn-default" />
+                </p>
+            }
+            <hr />
+            <table class="table">
+                <tr class="table-header">
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.Picture)
+                    </th>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.Nationality)
+                    </th>
+                    <th class="text-center">
+                        Current Team
+                    </th>
+                    <th class="text-center">
+                        Ratings
+                    </th>
+                    <th class="text-center">
+                        Rate the Player
+                    </th>
+                    <th class="text-center">
+                        Actions
+                    </th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-center">
+                            <img src="@Url.Content(item.Picture)" height="100" />
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.Nationality)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.Current_Team)
+                        </td>
+                        <td class="text-center">
+                            <i class="icon-thumbs-up"></i>
+                            @Html.DisplayFor(modelItem => item.Likes)
+                            <span style="padding: 0 10px;"></span>
+                            <i class="icon-thumbs-down"></i>
+                            @Html.DisplayFor(modelItem => item.Dislikes)
+                        </td>
+                      
+
+                        <td class="text-center">
+                            <ul class="list-inline">
+                                @Html.ActionLink("Like", "Like", new { item.id }, new { @class = "btn btn-success" })
+                                @Html.ActionLink("Dislike", "Dislike", new { item.id }, new { @class = "btn btn-danger" })
+                            </ul>
+                        </td>
+
+
+                        <td class="text-center">
+                            <ul class="list-inline">
+                                @Html.ActionLink("Profile", "Profile", new { item.id }, new { @class = "btn btn-default" })
+                                @Html.ActionLink("Edit", "Edit", new { item.id }, new { @class = "btn btn-default" })
+                                @Html.ActionLink("Delete", "Delete", new { item.id }, new { @class = "btn btn-default" })
+                            </ul>
+                        </td>
+                    </tr>
+                    @*<div id="@item.id" class="flex-container">
+                        @Html.Action("Indexpartial", new { id = item.id })
+                    </div>*@
+                }
+            </table>
+
+        </ContentTemplate>
+    </asp:UpdatePanel>
+
+    @section scripts {
+        <script type="text/javascript">
+            function ShowPopup() {
+                console.log("show popup invoked");
+                $('#modal-container').modal('show');
+                $('#modal-container').attr('data-toggle', 'modal');
+            }
+        </script>
+    }
+</body>
+
+</html >
